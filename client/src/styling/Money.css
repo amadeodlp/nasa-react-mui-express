@@ -1,0 +1,48 @@
+* {
+    font-family: Roboto;
+}
+
+.icon {
+    height: 25px;
+    
+}
+
+.slide {
+    padding-left: 10px;
+    animation: 25s left-to-right;
+    animation-iteration-count: infinite;
+    text-align: 'end'; 
+    display: 'block'; 
+    align-items: 'end'; 
+    flex-direction: 'column'; 
+    justify-content: 'center';
+
+}
+
+@keyframes left-to-right {
+    0% {
+       transform: translateX(0)
+    }
+
+    50% {
+        transform: translateX(25vw)
+        }
+    100% {
+        transform: translateX(0)
+        }
+ }
+
+ @media (max-width: 685px) { 
+    
+.slide {
+    animation: none;
+}
+
+}
+
+@media (max-width: 410) {
+
+.slide-container {
+    border: none;
+}
+}
