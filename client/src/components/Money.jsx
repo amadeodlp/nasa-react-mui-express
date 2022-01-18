@@ -46,7 +46,7 @@ const Money = () => {
 
   return (  
     <div className="money-container">
-      <div className="slide-container">
+      <div className={loading ? null : "slide-container"}>
         <div className="date">
           {date === "Invalid Date" ? "Loading date..." : date}
         </div>
