@@ -5,11 +5,15 @@ export const moneyReducer = createSlice({
     initialState: {
         price: "",
         date: "",
+        diff: "",
         fulfilled: false
     },
     reducers: {
         setPrice(state, action) {
         state.price = action.payload
+    },
+        setDiff(state, action) {
+        state.diff = action.payload
     },
         setDate(state, action) {
         state.date = action.payload
@@ -20,6 +24,6 @@ export const moneyReducer = createSlice({
 }
 });
 
-export const { setPrice, setDate, setFulfilled } = moneyReducer.actions;
+export const { setPrice, setDate, setDiff, setFulfilled } = moneyReducer.actions;
 
 export default moneyReducer.reducer;

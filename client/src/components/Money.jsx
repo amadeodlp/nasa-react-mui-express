@@ -1,15 +1,16 @@
 import {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { setPrice, setDate } from "../state/reducers/moneyReducer";
+import { setPrice, setDate, setDiff } from "../state/reducers/moneyReducer";
 import { setLoading } from "../state/reducers/loadingReducer";
 import "../styling/Money.css"
-import { Box, Container, Button } from '@mui/material';
-import { Round } from "./Round";
+import { Container, Button } from '@mui/material';
+import Round from "./Round";
+import { PercDiff } from "./Round";
 import { logout } from "../state/reducers/authReducer";
 
 const Money = () => {
   const dispatch = useDispatch();
-  const {price, date} = useSelector(state => state.money)
+  const {price, date, diff} = useSelector(state => state.money)
   const {loading} = useSelector(state => state.loading)
   const {token} = useSelector(state=> state.auth)
 
@@ -28,6 +29,8 @@ const Money = () => {
         if (json) {
         const localDate = new Date(json.dt);
         const currentPrice = typeof(json.price) === 'number' ? Round(json.price) : undefined;
+        const priceDiff = typeof(json.prev) === 'number' ? Round(PercDiff(json.prev, json.price)) : undefined;
+        dispatch(setDiff(priceDiff));
         dispatch(setPrice(currentPrice))
         dispatch(setDate(localDate.toDateString()))
         dispatch(setLoading(false))
@@ -42,16 +45,26 @@ const Money = () => {
 }, [dispatch]);
 
   return (  
-            <Container sx={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
-              <Box className="slide-container" sx={{display: 'flex', flexDirection: 'row', margin: 5, padding: 3, border: '1px solid #fff', borderRadius: '30px', width: '40%', overflow: 'hidden'}}>
-                {date === "Invalid Date" ? "Loading date..." : date}
-                <div className="slide">
-                  {loading ? "" : price === undefined ? " Loading EUR/USD XR..." : `  EUR/USD XR $${price}`}
-                </div>
-              </Box>
-              {token && <Button onClick={()=>dispatch(logout())}>Logout</Button>}
-            </Container>
-
+    <div className="money-container">
+      <div className="slide-container">
+        <div className="date">
+          {date === "Invalid Date" ? "Loading date..." : date}
+        </div>
+        <div className="slide">
+          {loading ? "" : price === undefined ? " Loading EUR/USD XR..." : `  EUR/USD XR $${price} `}
+          <div className="diff" style={{color: diff > 0 ? 'green' : 'red'}}>
+            <strong>
+            {diff > 0 && `+`}{diff}%
+            </strong>
+          </div>
+        </div>
+      </div>
+      {token && 
+      <div className="logout-btn">
+      <Button variant= 'outlined' onClick={()=>dispatch(logout())}>Logout</Button>
+      </div>
+      }
+    </div>
   )
 }
 

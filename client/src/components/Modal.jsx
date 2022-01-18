@@ -2,7 +2,7 @@ import { Box, Button, TextField, Modal, Typography, Link } from "@mui/material";
 import { setModal, setMessage } from "../state/reducers/modalReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from 'formik';
-import * as yup from 'yup'
+import * as yup from 'yup';
 
 const RecoverModal = () => {
     const dispatch = useDispatch();
@@ -77,7 +77,7 @@ const RecoverModal = () => {
                         mt: '50px'}}
                     >
                     If you need any assistance please contact us on 
-                    <Link underline="hover" href="mailto:support@ortex.com">support@ortex.com</Link>
+                    <Link underline="hover" href="mailto:support@ortex.com"> support@ortex.com</Link>
                     </Typography>
                 </Box>
             </form>  

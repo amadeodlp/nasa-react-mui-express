@@ -48,3 +48,4 @@ export const authReducer = createSlice({
   export const { logout, authSuccess } = authReducer.actions;
   
   export default authReducer.reducer;
+  

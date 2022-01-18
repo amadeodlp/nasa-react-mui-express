@@ -5,6 +5,7 @@ import { setModal } from "../state/reducers/modalReducer";
 import {login} from '../state/reducers/authReducer';
 import { useFormik } from 'formik';
 import * as yup from 'yup'
+import '../styling/LoginForm.css'
 
 const LoginForm = () => {
   
@@ -35,8 +36,19 @@ const LoginForm = () => {
       });
 
     return (
-        <form onSubmit={formik.handleSubmit}>
-          <Box sx={{margin: 4, padding: 3, display: 'flex', flexDirection: 'column', gap: 3, textAlign: 'center', boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)', border:'solid black', backgroundColor: '#0F2833'}}>
+        <form className="login-form"onSubmit={formik.handleSubmit}>
+          <Box 
+          sx={{
+            margin: 4, 
+            padding: 3, 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: 3, 
+            textAlign: 'center', 
+            boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)', 
+            border:'solid black', 
+            backgroundColor: '#0F2833'}}
+          >
           {open && <ModalBox/>}
             <TextField
                 sx={{ input: { color: '#fff', minWidth: '25vw' } }} 
