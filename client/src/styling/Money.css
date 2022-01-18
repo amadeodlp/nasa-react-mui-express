@@ -58,7 +58,7 @@
         transform: translateX(0)
     }
     75% {
-        transform: translateX(-5vh)
+        transform: translateX(-5vw)
     }
     100% {
         transform: translateX(0)
