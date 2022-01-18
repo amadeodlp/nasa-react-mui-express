@@ -54,7 +54,7 @@ const Money = () => {
           {loading ? "" : price === undefined ? " Loading EUR/USD XR..." : `  EUR/USD XR $${price} `}
           <div className="diff" style={{color: diff > 0 ? 'green' : 'red'}}>
             <strong>
-            {diff > 0 && `+`}{diff + ( diff && `%`)}
+            {diff > 0 && `+`}{diff !== undefined && diff + (diff && `%`)}
             </strong>
           </div>
         </div>
