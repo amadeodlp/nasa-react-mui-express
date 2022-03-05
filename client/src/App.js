@@ -6,7 +6,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import {useDispatch, useSelector} from 'react-redux'
 import { authSuccess } from "./state/reducers/authReducer";
-import Money from "./components/Money";
+import Photos from "./components/Photos";
+import Sidebar from "./components/Sidebar";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,9 +21,12 @@ function App() {
   }
   return (
         <BrowserRouter>
-          <Money />            
+          <Sidebar/>
           <Routes>
             <Route path="/" element={<Home/>} />
+            <Route path="/marsphotos" element={<Photos/>} />
+            <Route path="/about" element={<About/>} />
+            <Route path="/contact" element={<Contact/>} />
           </Routes>
         </BrowserRouter>
   )

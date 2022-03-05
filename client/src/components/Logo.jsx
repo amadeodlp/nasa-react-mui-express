@@ -1,8 +1,8 @@
-import logo from '../images/ortex-logo.png'
+import logo from '../images/nasa-6.svg'
 
-const Logo = () => {
+const Logo = ({height}) => {
     return (
-        <img style={{height: '15%'}} src={logo}>
+        <img style={{height: height}} src={logo}>
         </img>
     )
 }
