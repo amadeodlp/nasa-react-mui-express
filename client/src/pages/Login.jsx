@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setLoading } from "../state/reducers/loadingReducer";
 import LoginForm from "../components/LoginForm";
+import '../styling/Login.css';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Login = () => {
   }, [dispatch])
 
   return (
-        <>
+        <div className='login-container'>
         <Money />            
         {loading ?
         <Container sx={{height: '100%', backgroundColor:'0F2833'}}>
@@ -29,11 +30,11 @@ const Login = () => {
         :
         <Container
           sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'start', height: '100vh'}}>
-          <Logo />
+          <Logo height='15%' />
           <LoginForm/>
         </Container>
           }  
-        </>         
+        </div>         
     )
 }
 
